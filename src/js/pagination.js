@@ -4,13 +4,14 @@ let numberOfPages = 6;
 let cardOnPage = 8;
 let parts = 3;
 let finalArray = [];
-export function initial() {
+
+function initial() {
   let newArr = [];
 
   for (let i = 0; i < cardOnPage; i += 3) {
     newArr.push(cardArr.slice(i, i + parts));
   }
-  //   console.log(newArr);
+  console.log(newArr);
 
   function mixArray(array) {
     for (let i = 0; i < array.length; i += 1) {
@@ -24,35 +25,34 @@ export function initial() {
 
   for (let i = 0; i < 6; i += 1) {
     let element = newArr.map((el) => mixArray(el));
-    console.log(element);
     finalArray.push(element.flat());
   }
   console.log(finalArray);
 }
 
-const paginationState = {
-  currentPageCards: [],
+// const paginationState = {
+//   currentPageCards: [],
 
-  petsData: [],
+//   petsData: [],
 
-  addCurrentPageCard(card) {
-    this.currentPageCards.push(card);
-  },
-  getCurrentPageCards() {
-    return this.currentPageCards;
-  },
+//   addCurrentPageCard(card) {
+//     this.currentPageCards.push(card);
+//   },
+//   getCurrentPageCards() {
+//     return this.currentPageCards;
+//   },
 
-  updatePetsData(petsData) {
-    this.petsData = petsData;
-  },
+//   updatePetsData(petsData) {
+//     this.petsData = petsData;
+//   },
 
-  showPage(number) {
-    this.currentPageCards.forEach((card, i) => {
-      const { img, name } = this.petsData[number - 1][i];
-      card.updateImage({ src: img, alt: name });
-      card.updateName({ textContent: name });
-    });
-  },
-};
+//   showPage(number) {
+//     this.currentPageCards.forEach((card, i) => {
+//       const { img, name } = this.petsData[number - 1][i];
+//       card.updateImage({ src: img, alt: name });
+//       card.updateName({ textContent: name });
+//     });
+//   },
+// };
 
-export { numberOfPages, finalArray };
+export { numberOfPages, finalArray, initial };

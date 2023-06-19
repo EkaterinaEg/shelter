@@ -18,7 +18,5 @@ function createSliderButtons() {
   document.querySelector(".our-friends__container").append(buttonContainer);
   buttonContainer.append(buttonLeft);
   buttonContainer.append(buttonRight);
-  console.log(buttonContainer);
-  console.log(document.querySelector(".slider_main"));
 }
 createSliderButtons();

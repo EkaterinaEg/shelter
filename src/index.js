@@ -5,14 +5,14 @@ import { Modal } from "./js/modal.js";
 import { fillblocks, CARD_CONTAINER } from "./js/slider.js";
 import "./js/sliderButtons.js";
 // import "./js/paginationButtons.js";
-// import "./js/pagination.js";
+import { initial } from "./js/pagination.js";
 
 // import { initial, numberOfPages } from "./js/pagination.js";
 
 window.onload = function () {
   fillblocks(); //create blocks with cards
   addCardClickHandler(); //popup
-  // initial(); //test
+  initial(); //test
 };
 
 // _______________________________________

@@ -99,4 +99,4 @@ const data = [
 
 const DATA_WITH_ID = data.map((n, i) => ({ id: i + 1, ...n }));
 
-export { DATA_WITH_ID };
+export { data, DATA_WITH_ID };
