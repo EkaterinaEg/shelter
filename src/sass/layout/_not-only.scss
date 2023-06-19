@@ -1,0 +1,73 @@
+.main-block__not-only {
+  background: url(../img/noise_transparent@2x.svg),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  padding-top: 101px;
+}
+.not-only__container {
+  display: flex;
+  justify-content: space-between;
+
+  @include media-laptop {
+    flex-direction: column;
+    padding-top: 49px;
+    gap: 100px;
+  }
+  @include media-mobilesmall {
+    gap: 105px;
+  }
+}
+.motto__img {
+  width: calc(100% - ((460 + 42) / 1200 * 100%));
+  flex-shrink: 0;
+  padding-top: 78px;
+  @include media-laptop {
+    align-self: flex-end;
+    max-width: 569px;
+    width: 47%;
+    padding: 0;
+  }
+  @include media-768 {
+    width: 100%;
+  }
+  @include media-mobilesmall {
+    max-width: 260px;
+    width: 100%;
+  }
+}
+
+.not-only__motto {
+  display: flex;
+  flex-direction: column;
+  max-width: 460px;
+  margin: 0;
+  // padding-bottom: 80px;
+  align-self: center;
+  align-items: start;
+  row-gap: 42px;
+  flex-shrink: 1;
+  @include media-768 {
+    margin: 0 auto;
+  }
+  @include media-mobilesmall {
+    align-items: center;
+  }
+}
+.motto__title {
+  max-width: 320px;
+  // flex-wrap: wrap;
+  @include media-mobilesmall {
+    @include font($size: 2.5rem, $height: 3.25rem, $weight: normal);
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+}
+.motto__text {
+  @extend %font-prim;
+  @include font($size: 1.5rem, $height: 2.4rem, $weight: normal);
+  color: $color-text;
+  flex-wrap: wrap;
+  margin: 0;
+  @include media-mobilesmall {
+    text-align: center;
+  }
+}

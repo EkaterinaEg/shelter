@@ -1,0 +1,53 @@
+.main-block__our-friends {
+  background-color: $background-dark;
+  text-align: center;
+  padding: 80px 0 100px 0px;
+  // position: relative;
+  @include media-mobilesmall {
+    padding: 42px 0;
+  }
+}
+.our-friends_main {
+  @include media-768 {
+    padding: 70px 0 100px 0px;
+  }
+}
+.our-friends_pets {
+  @include media-768 {
+    padding: 80px 0 77px 0px;
+  }
+  @include media-mobilesmall {
+    padding: 42px 0 42px 0px;
+  }
+}
+.our-friends__container {
+  position: relative;
+}
+.our-friends__title {
+  margin: 0;
+  @include media-mobilesmall {
+    @include font($size: 2.5rem, $height: 3.25rem, $weight: normal);
+    letter-spacing: 0.06em;
+  }
+}
+
+.title_pets {
+  color: $color-titles;
+  padding-top: 120px;
+  margin-bottom: 58px;
+  @include font($size: 3.5rem, $height: 4.55rem, $weight: normal);
+  letter-spacing: 0.06em;
+  @include media-768 {
+    margin-bottom: 30px;
+  }
+  @include media-mobilesmall {
+    @include font($size: 2.5rem, $height: 3.25rem, $weight: normal);
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+  }
+}
+.our-friends__pagination {
+  @include media-mobilesmall {
+    justify-content: space-between;
+  }
+}

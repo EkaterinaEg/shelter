@@ -1,0 +1,103 @@
+.main-block__help {
+  background-color: $color-white;
+  padding: 80px 0 100px 0;
+  margin: 0 auto;
+  @include media-mobilesmall {
+    padding: 41px 0;
+  }
+}
+.help__container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.help__title {
+  max-width: 310px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 60px;
+  @include media-mobilesmall {
+    @include font($size: 2.5rem, $height: 3.25rem, $weight: normal);
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+  }
+}
+.help__list {
+  max-width: 1026px;
+  margin: 0;
+  //   display: grid;
+  //   grid-template-columns: repeat(9, 1fr);
+  //   grid-template-rows: repeat(2, 113px);
+  //   justify-content: space-between;
+  // grid-template-areas:
+  //   pf tr ts bc sh
+  //   vt md cl sa;
+  //   row-gap: 55px;
+  //   column-gap: 120px;
+  //   align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 56px;
+  column-gap: 119px;
+  justify-content: center;
+  align-items: center;
+  @include media-laptop {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 113px);
+    gap: 55px 63px;
+  }
+  @include media-768 {
+    padding: 0px 0px;
+    justify-content: space-evenly;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-template-rows: repeat(3, 113px);
+    // gap: 55px 63px;
+  }
+
+  @include media-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 87px);
+    gap: 30px;
+    padding-left: 20px;
+  }
+  @include media-mobilesmall {
+    padding-left: 0;
+  }
+  // padding: 60px 86px 0px 86px;
+}
+// .list__item:nth-child(6) {
+//   grid-column: 1/2;
+// }
+// .list__item:nth-child(7) {
+//   grid-column: 3/4;
+// }
+// .list__item:nth-child(8) {
+//   grid-column: 4/5;
+// }
+// .list__item:nth-child(9) {
+//   grid-column: 5/6;
+// }
+
+.list__item {
+  text-align: center;
+}
+.item__text {
+  white-space: nowrap;
+  @include media-mobilesmall {
+    @include font($size: 1.5rem, $height: 1.65rem, $weight: normal);
+    letter-spacing: 0.06em;
+  }
+}
+.item__icon {
+  max-width: 60px;
+  height: 60px;
+  margin-bottom: 21px;
+  @include media-mobilesmall {
+    max-width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+}

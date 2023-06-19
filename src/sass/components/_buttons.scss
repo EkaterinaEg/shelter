@@ -1,0 +1,98 @@
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 1.5rem 4.5rem;
+  border-radius: 100px;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.06em; /*calc(1em*6%/100%)*/
+  color: $button-text;
+  @extend %transition;
+  @extend %font-add;
+  @include font($size: 1.7rem, $height: 2.21rem, $weight: normal);
+
+  &_colored {
+    background-color: $color-primary;
+    &:hover {
+      background-color: $button-hovered;
+      border-color: $button-hovered;
+    }
+  }
+}
+.our-friends__buttons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  @include media-tablet {
+    justify-content: center;
+    gap: 80px;
+    top: 103%;
+  }
+}
+.our-friends__button {
+  @include media-tablet {
+    margin-top: 114px;
+  }
+}
+.buttons__btn-slider {
+  box-sizing: border-box;
+  border-radius: 100px;
+  background-color: transparent;
+  border: 2px solid $color-primary;
+  padding: 25px 19px;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+
+  &:hover {
+    background-color: $button-hovered;
+    border-color: $button-hovered;
+  }
+}
+.buttons__btn-slider_arrow-left {
+  background: url(../../img/Arrow.svg) no-repeat;
+  background-position: center;
+}
+.buttons__btn-slider_arrow-right {
+  transform: rotate(180deg);
+  background: url(../../img/Arrow.svg) no-repeat;
+  background-position: center;
+}
+.pagination__buttons {
+  @extend %transition;
+  @extend %font-add;
+  @include font($size: 2rem, $height: 2.3rem, $weight: normal);
+  letter-spacing: 0.06em;
+  color: $color-titles;
+  display: inline-block;
+  margin-right: 16px;
+  padding: 10px 8px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:nth-child(3) {
+    background-color: $color-primary;
+    cursor: none;
+  }
+  @include media-tablet {
+    margin-right: 5px;
+  }
+  @include media-mobilesmall {
+    margin-right: 5px;
+  }
+}
+.button_disabled {
+  border: 2px solid $color-grey-light;
+  color: $color-grey-light;
+  pointer-events: none;
+}
+.motto__button {
+  @include media-768 {
+    align-self: center;
+  }
+}

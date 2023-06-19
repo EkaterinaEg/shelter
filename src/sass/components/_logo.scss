@@ -1,0 +1,30 @@
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  @extend %font-add;
+  @include font($size: 3.2rem, $height: 3.52rem, $weight: normal);
+  letter-spacing: 0.06em; /*calc(1em*6%/100%)*/
+  margin-top: 0;
+  margin-bottom: 10px;
+  &_dark {
+    color: $color-primary;
+  }
+  &_light {
+    color: $color-titles;
+  }
+}
+.subtitle {
+  @extend %font-prim;
+  @include font($size: 1.3rem, $height: 1.495rem, $weight: normal);
+  letter-spacing: 0.1em; /*calc(1em/10%) */
+  margin: 0;
+  &_dark {
+    color: $color-white;
+  }
+  &_light {
+    color: $button-text;
+  }
+}

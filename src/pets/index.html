@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Shelter</title>
+    <link rel="stylesheet" href="../sass/style.css" />
+  </head>
+  <body class="main-page">
+    <header class="main-page__header header header_light">
+      <div class="wrapper">
+        <div class="header__container">
+          <a href="#" class="header__logo">
+            <p class="logo__title title title_light">Cozy House</p>
+            <p class="logo__subtitle_light subtitle subtitle_light">
+              Shelter for pets in Boston
+            </p>
+          </a>
+          <nav class="header__nav">
+            <ul class="menu-list">
+              <li class="menu-list__item item_light">
+                <a href="../main/index.html" class="menu-list__link link_light"
+                  >About the shelter</a
+                >
+              </li>
+              <li class="menu-list__item item_light">
+                <a
+                  href="#"
+                  class="menu-list__link link_always-active link_light"
+                  >Our pets</a
+                >
+              </li>
+              <li class="menu-list__item item_light">
+                <a
+                  href="../main/index.html#help-the-shelter"
+                  class="menu-list__link link_light"
+                  >Help the shelter</a
+                >
+              </li>
+              <li class="menu-list__item item_light">
+                <a href="#contacts" class="menu-list__link link_light"
+                  >Contacts</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <span class="header__hamburger header__hamburger_light"
+            ><span class="hamburger-line hamburger-line_light"></span
+          ></span>
+        </div>
+      </div>
+    </header>
+    <main class="main-page__main-block">
+      <article class="main-block__our-friends our-friends_pets">
+        <div class="wrapper">
+          <div class="our-friends__block">
+            <h1 class="our-friends__title title_pets">
+              Our friends who <br />are looking for a house
+            </h1>
+            <div class="our-friends__slider slider_pets">
+              <div class="slider__card card_pets"></div>
+            </div>
+            <!-- <div class="our-friends__pagination">
+              <button
+                type="button"
+                class="pagination__buttons button buttons__btn-slider button_disabled"
+              >
+                &lt;&lt;
+              </button>
+              <button
+                type="button"
+                class="pagination__buttons button buttons__btn-slider button_disabled"
+              >
+                &lt;
+              </button>
+              <button
+                type="button"
+                class="pagination__buttons button buttons__btn-slider"
+              >
+                1
+              </button>
+              <button
+                type="button"
+                class="pagination__buttons button buttons__btn-slider"
+              >
+                &gt;
+              </button>
+              <button
+                type="button"
+                class="pagination__buttons button buttons__btn-slider"
+              >
+                &gt;&gt;
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer class="main-page__footer footer" id="contacts">
+      <div class="wrapper">
+        <div class="footer__container">
+          <div class="footer__contacts">
+            <h2 class="contacts__title">For questions and suggestions</h2>
+            <a href="mailto:email@shelter.com" class="contacts__email">
+              <h3 class="email__text">email@shelter.com</h3>
+            </a>
+            <a href="tel:+136745677554" class="contacts__phone">
+              <h3 class="phone__text">+13 674 567 75 54</h3></a
+            >
+          </div>
+          <div class="footer__address">
+            <h2 class="address__title">We are waiting for your visit</h2>
+            <a
+              href="https://www.google.com/maps/place/1+Central+St,+Boston,+MA+02109,+USA/@42.3585558,-71.056915,17z/data=!3m1!4b1!4m5!3m4!1s0x89e370868bc2ce7b:0x82fa7db94f5fea9e!8m2!3d42.3585519!4d-71.0547263"
+              class="address__link link_boston"
+              target="_blank"
+            >
+              <!-- <img src="/img/pin.svg" alt="pin picture"> -->
+              <h3 class="address__text">
+                1 Central Street, Boston<br />(entrance from the store)
+              </h3>
+            </a>
+            <a
+              href="https://www.google.com/maps/place/South+Park+Court,+18+S+Park+Rd,+London+SW19+8TD,+UK/@51.4313002,-0.4367802,10.5z/data=!4m6!3m5!1s0x487608baa7401b31:0x873a95ca58e122b2!8m2!3d51.4202192!4d-0.200152!16s%2Fg%2F11c1z48z8w"
+              class="address__link link_london"
+              target="_blank"
+            >
+              <h3 class="address__text">18 South Park, London</h3>
+            </a>
+          </div>
+          <img
+            src="../img/footer-puppy.png"
+            alt="picture of red puppy"
+            class="footer__img"
+          />
+        </div>
+      </div>
+    </footer>
+    <div class="overlay hidden"></div>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
+<!-- <img
+src="../img/pets-katrine.png"
+alt="front view of picture of walking grey cat"
+class="card__img"
+/>
+<p class="card__title">Katrine</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-jennifer.png"
+alt="front view of sitting golden retriever puppy"
+class="card__img"
+/>
+<p class="card__title">Jennifer</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-woody.png"
+alt="front view of lying golden retriever"
+class="card__img"
+/>
+<p class="card__title">Woody</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-sophia.png"
+alt="front view of black-white puppy in the palm"
+class="card__img"
+/>
+<p class="card__title">Sophia</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-timmy.png"
+alt="front view of siting grey cat"
+class="card__img"
+/>
+<p class="card__title">Timmy</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-charly.png"
+alt="front view of lying dog"
+class="card__img"
+/>
+<p class="card__title">Charly</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-scarlet.png"
+alt="front view of standing red-white puppy"
+class="card__img"
+/>
+<p class="card__title">Scarlet</p>
+<a href="#" class="card__button button">Learn more</a>
+</div>
+<div class="slider__card card_pets">
+<img
+src="../img/pets-freddie.png"
+alt="front view of siting striped kitten"
+class="card__img"
+/>
+<p class="card__title">Freddie</p>
+<a href="#" class="card__button button">Learn more</a>
+</div> -->
