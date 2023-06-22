@@ -1,148 +1,90 @@
 import { createElement } from "./createElement.js";
+import { currentPage } from "./pagination.js";
 
-const TEXT_BUTTON_FIRST = "<<";
-const TEXT_BUTTON_LAST = ">>";
+const PAGINATION_CONTAINER = document.querySelector(".our-friends__block");
+const TEXT_BUTTON_DOUBLE_PREV = "<<";
+const TEXT_BUTTON_DOUBLE_NEXT = ">>";
+// const TEXT_BUTTON_CURRENT = currentPage;
 const TEXT_BUTTON_PREV = "<";
 const TEXT_BUTTON_NEXT = ">";
 
-const counterState = {
-  countPage: 0,
-  currentPage: 1,
+let ButtonDoublePrev = null;
+let ButtonPrev = null;
+let ButtonCurrent = null;
+let ButtonNext = null;
+let ButtonDoubleNext = null;
+let paginationButtonsContainer = null;
 
-  updatePageCount(count) {
-    if (typeof count !== "number" || count < 0) {
-      throw new TypeError("Pagination error. Count page is invalid.");
-    }
-    this.countPage = count;
-  },
-  updateCurrentPage(page, onUpdate) {
-    if (typeof page !== "number" || page < 0) {
-      throw new TypeError("Pagination error. Current page is invalid.");
-    }
-    this.currentPage = page;
-    onUpdate(page);
-  },
-  decreaseCurrentPage(onUpdate) {
-    this.currentPage -= 1;
-    onUpdate(this.currentPage);
-  },
-  increaseCurrentPage(onUpdate) {
-    this.currentPage += 1;
-    onUpdate(this.currentPage);
-  },
-  getCountPage() {
-    return this.countPage;
-  },
-  getCurrentPage() {
-    return this.currentPage;
-  },
-  isFirstPage() {
-    return this.currentPage === 1;
-  },
-  isLastPage() {
-    return this.currentPage === this.countPage;
-  },
-};
+function createPaginationButtons() {
+  paginationButtonsContainer = createElement("div", "our-friends__pagination");
 
-const buttonsState = {
-  buttonCurrent: createElement({
-    tagName: "button",
-    className: `pagination__buttons button buttons__btn-slider`,
-    textContent: counterState.getCurrentPage(),
-  }),
-  buttonFirst: createElement({
-    tagName: "button",
-    className: `pagination__buttons button buttons__btn-slider`,
-    textContent: TEXT_BUTTON_FIRST,
-    onClickHandler: () => {
-      counterState.updateCurrentPage(
-        1,
-        buttonsState.updateButtonsStatuses.bind(buttonsState)
-      );
-    },
-  }),
-  buttonPrev: createElement({
-    tagName: "button",
-    className: `pagination__buttons button buttons__btn-slider`,
-    textContent: TEXT_BUTTON_PREV,
-    onClickHandler: () => {
-      counterState.decreaseCurrentPage(
-        buttonsState.updateButtonsStatuses.bind(buttonsState)
-      );
-    },
-  }),
-  buttonNext: createElement({
-    tagName: "button",
-    className: `pagination__buttons button buttons__btn-slider`,
-    textContent: TEXT_BUTTON_NEXT,
-    onClickHandler: () => {
-      counterState.increaseCurrentPage(
-        buttonsState.updateButtonsStatuses.bind(buttonsState)
-      );
-    },
-  }),
-  buttonLast: createElement({
-    tagName: "button",
-    className: `pagination__buttons button buttons__btn-slider`,
-    textContent: TEXT_BUTTON_LAST,
-    onClickHandler: () => {
-      counterState.updateCurrentPage(
-        counterState.getCountPage(),
-        buttonsState.updateButtonsStatuses.bind(buttonsState)
-      );
-    },
-  }),
+  ButtonDoublePrev = createElement("button", "pagination__buttons");
 
-  setOnUpdatePageCallback(onUpdate) {
-    this.onPageUpdate = onUpdate;
-  },
-
-  updateCurrentButtonText(text) {
-    this.buttonCurrent.textContent = text.toString();
-  },
-
-  updateButtonsStatuses(page) {
-    this.updateCurrentButtonText(page);
-    toggleButtons(
-      [this.buttonLast, this.buttonNext],
-      counterState.isLastPage()
-    );
-    toggleButtons(
-      [this.buttonFirst, this.buttonPrev],
-      counterState.isFirstPage()
-    );
-    if (this.onPageUpdate) {
-      this.onPageUpdate(page);
-    }
-  },
-
-  getButtons() {
-    return {
-      buttonFirst: this.buttonFirst,
-      buttonPrev: this.buttonPrev,
-      buttonCurrent: this.buttonCurrent,
-      buttonNext: this.buttonNext,
-      buttonLast: this.buttonLast,
-    };
-  },
-};
-
-function createPaginationButtons(count, onUpdatePage) {
-  if (typeof count !== "number" || count < 0) {
-    throw new TypeError("Pagination error. Count page is invalid.");
-  }
-  const paginationButtonsContainer = createElement({
-    tagName: "div",
-    className: our - friends__pagination,
-  });
-
-  paginationButtonsContainer.append(
-    ...Object.values(buttonsState.getButtons())
+  ButtonDoublePrev.classList.add(
+    "button",
+    "buttons__btn-slider",
+    "pagination__buttons_double-prev"
   );
-  buttonsState.setOnUpdatePageCallback(onUpdatePage);
-  buttonsState.updateButtonsStatuses(1);
-  counterState.updatePageCount(count);
-  return paginationButtonsContainer;
-}
 
-export { createPaginationButtons };
+  ButtonDoublePrev.textContent = TEXT_BUTTON_DOUBLE_PREV;
+
+  ButtonPrev = createElement("button", "pagination__buttons");
+  ButtonPrev.classList.add(
+    "button",
+    "buttons__btn-slider",
+    "pagination__buttons_prev"
+  );
+  ButtonPrev.textContent = TEXT_BUTTON_PREV;
+
+  ButtonCurrent = createElement("button", "pagination__buttons");
+  ButtonCurrent.classList.add(
+    "button",
+    "buttons__btn-slider",
+    "pagination__buttons_current"
+  );
+  ButtonCurrent.textContent = 1;
+
+  ButtonNext = createElement("button", "pagination__buttons");
+  ButtonNext.classList.add(
+    "button",
+    "buttons__btn-slider",
+    "pagination__buttons_next"
+  );
+  ButtonNext.textContent = TEXT_BUTTON_NEXT;
+
+  ButtonDoubleNext = createElement("button", "pagination__buttons");
+  ButtonDoubleNext.classList.add(
+    "button",
+    "buttons__btn-slider",
+    "pagination__buttons_double-next"
+  );
+  ButtonDoubleNext.textContent = TEXT_BUTTON_DOUBLE_NEXT;
+
+  PAGINATION_CONTAINER.append(paginationButtonsContainer);
+
+  paginationButtonsContainer.append(ButtonDoublePrev);
+  paginationButtonsContainer.append(ButtonPrev);
+  paginationButtonsContainer.append(ButtonCurrent);
+  paginationButtonsContainer.append(ButtonNext);
+  paginationButtonsContainer.append(ButtonDoubleNext);
+  // return (
+  //   ButtonCurrent,
+  //   ButtonDoubleNext,
+  //   ButtonDoublePrev,
+  //   ButtonNext,
+  //   ButtonPrev,
+  //   paginationButtonsContainer
+  // );
+}
+createPaginationButtons();
+
+export {
+  paginationButtonsContainer,
+  createPaginationButtons,
+  ButtonCurrent,
+  ButtonDoubleNext,
+  ButtonDoublePrev,
+  ButtonNext,
+  ButtonPrev,
+  PAGINATION_CONTAINER,
+};

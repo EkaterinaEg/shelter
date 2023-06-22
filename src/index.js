@@ -3,18 +3,24 @@ import { DATA_WITH_ID } from "./js/data.js";
 import "./js/hamburger.js";
 import { Modal } from "./js/modal.js";
 import { fillblocks, CARD_CONTAINER } from "./js/slider.js";
-import "./js/sliderButtons.js";
-// import "./js/paginationButtons.js";
-import { initial } from "./js/pagination.js";
+// import "./js/sliderButtons.js";
+import {
+  createArrayOfCards,
+  showPictures,
+  finalArray,
+  currentPage,
+  uploadCards,
+} from "./js/pagination.js";
 
 // import { initial, numberOfPages } from "./js/pagination.js";
 
 window.onload = function () {
-  fillblocks(); //create blocks with cards
-  addCardClickHandler(); //popup
-  initial(); //test
+  // fillblocks(); //create blocks with cards
+  // addCardClickHandler(); //popup
+  createArrayOfCards(); //test
+  showPictures(finalArray, currentPage);
 };
-
+console.log(finalArray);
 // _______________________________________
 // create popup
 
@@ -41,13 +47,3 @@ const renderElementModal = (el) => {
   popup.renderPopup();
 };
 // _____________________________________________pagination
-
-// const showcaseElement = Pagination.createComponent(petsJSON);
-// const paginationCounter = createPaginationButtons(numberOfPages, Pagination.showPage);
-// const paginationComponent = createElement({
-//     tagName: 'section',
-//     className: CssClasses.CONTAINER,
-// });
-
-// paginationComponent.append(showcaseElement, counterComponent);
-// document.body.append(paginationComponent);

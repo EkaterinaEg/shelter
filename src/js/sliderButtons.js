@@ -15,7 +15,9 @@ function createSliderButtons() {
   buttonRight.classList.add("buttons__btn-slider");
   buttonRight.classList.add("buttons__btn-slider_arrow-right");
 
-  document.querySelector(".our-friends__container").append(buttonContainer);
+  if (document.querySelector(".our-friends__container")) {
+    document.querySelector(".our-friends__container").append(buttonContainer);
+  }
   buttonContainer.append(buttonLeft);
   buttonContainer.append(buttonRight);
 }

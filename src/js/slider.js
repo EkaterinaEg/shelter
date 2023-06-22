@@ -35,8 +35,9 @@ function createSlider() {
       const cardGroup = createElement("div", "slider__block");
       cardGroup.classList.add(`block-${i + 1}`);
       // cardGroup.style.order = `${i + 1}`;
-
-      CARD_CONTAINER.append(cardGroup);
+      if (CARD_CONTAINER) {
+        CARD_CONTAINER.append(cardGroup);
+      }
     }
     // number of cards for each page
     // if (CARD_CONTAINER.classList.contains("slider_main")) {
@@ -118,72 +119,77 @@ const moveRight = () => {
   BUTTON_LEFT.removeEventListener("click", moveLeft);
   BUTTON_RIGHT.removeEventListener("click", moveRight);
 };
-
-BUTTON_LEFT.addEventListener("click", moveLeft);
-BUTTON_RIGHT.addEventListener("click", moveRight);
-
-CARD_CONTAINER.addEventListener("animationend", (animationEvent) => {
-  let temp = [];
-  if (animationEvent.animationName === "animation_left") {
-    BLOCK_RIGHT.innerHTML = "";
-    BLOCK_RIGHT.innerHTML = BLOCK_ACTIVE.innerHTML;
-    BLOCK_ACTIVE.innerHTML = BLOCK_LEFT.innerHTML;
-
-    visibleCards.length = 0;
-    for (let i = 0; i < BLOCK_ACTIVE.children.length; i++) {
-      visibleCards.push(BLOCK_ACTIVE.children[i].getAttribute("data-id"));
-    }
-
-    while (BLOCK_LEFT.firstElementChild) {
-      BLOCK_LEFT.firstElementChild.remove();
-    }
-
-    while (temp.length < countCard) {
-      let index = Math.floor(Math.random() * cardArr.length);
-
-      if (
-        !visibleCards.includes(cardArr[index].getAttribute("data-id")) &&
-        !temp.includes(cardArr[index])
-      ) {
-        temp.push(cardArr[index]);
-      }
-    }
-
-    temp.forEach((card) => BLOCK_LEFT.insertAdjacentElement("beforeend", card));
-    temp.length = 0;
-    CARD_CONTAINER.classList.remove("transition_left");
-  } else {
-    BLOCK_LEFT.innerHTML = "";
-    BLOCK_LEFT.innerHTML = BLOCK_ACTIVE.innerHTML;
-    BLOCK_ACTIVE.innerHTML = BLOCK_RIGHT.innerHTML;
-
-    visibleCards.length = 0;
-    for (let i = 0; i < BLOCK_ACTIVE.children.length; i++) {
-      visibleCards.push(BLOCK_ACTIVE.children[i].getAttribute("data-id"));
-    }
-
-    while (BLOCK_RIGHT.firstElementChild) {
-      BLOCK_RIGHT.firstElementChild.remove();
-    }
-
-    while (temp.length < countCard) {
-      let index = Math.floor(Math.random() * cardArr.length);
-
-      if (
-        !visibleCards.includes(cardArr[index].getAttribute("data-id")) &&
-        !temp.includes(cardArr[index])
-      ) {
-        temp.push(cardArr[index]);
-      }
-    }
-
-    temp.forEach((card) =>
-      BLOCK_RIGHT.insertAdjacentElement("beforeend", card)
-    );
-    temp.length = 0;
-    CARD_CONTAINER.classList.remove("transition_right");
-  }
+if (BUTTON_LEFT && BUTTON_RIGHT) {
   BUTTON_LEFT.addEventListener("click", moveLeft);
   BUTTON_RIGHT.addEventListener("click", moveRight);
-});
+}
+if (CARD_CONTAINER) {
+  CARD_CONTAINER.addEventListener("animationend", (animationEvent) => {
+    let temp = [];
+    if (animationEvent.animationName === "animation_left") {
+      visibleCards.length = 0;
+      for (let i = 0; i < BLOCK_ACTIVE.children.length; i++) {
+        visibleCards.push(BLOCK_ACTIVE.children[i].getAttribute("data-id"));
+      }
+
+      while (BLOCK_LEFT.firstElementChild) {
+        BLOCK_LEFT.firstElementChild.remove();
+      }
+
+      while (temp.length < countCard) {
+        let index = Math.floor(Math.random() * cardArr.length);
+
+        if (
+          !visibleCards.includes(cardArr[index].getAttribute("data-id")) &&
+          !temp.includes(cardArr[index])
+        ) {
+          temp.push(cardArr[index]);
+        }
+      }
+
+      temp.forEach((card) =>
+        BLOCK_LEFT.insertAdjacentElement("beforeend", card)
+      );
+      temp.length = 0;
+
+      BLOCK_RIGHT.innerHTML = "";
+      BLOCK_RIGHT.innerHTML = BLOCK_ACTIVE.innerHTML;
+      BLOCK_ACTIVE.innerHTML = BLOCK_LEFT.innerHTML;
+
+      CARD_CONTAINER.classList.remove("transition_left");
+    } else {
+      BLOCK_LEFT.innerHTML = "";
+      BLOCK_LEFT.innerHTML = BLOCK_ACTIVE.innerHTML;
+      BLOCK_ACTIVE.innerHTML = BLOCK_RIGHT.innerHTML;
+
+      visibleCards.length = 0;
+      for (let i = 0; i < BLOCK_ACTIVE.children.length; i++) {
+        visibleCards.push(BLOCK_ACTIVE.children[i].getAttribute("data-id"));
+      }
+
+      while (BLOCK_RIGHT.firstElementChild) {
+        BLOCK_RIGHT.firstElementChild.remove();
+      }
+
+      while (temp.length < countCard) {
+        let index = Math.floor(Math.random() * cardArr.length);
+
+        if (
+          !visibleCards.includes(cardArr[index].getAttribute("data-id")) &&
+          !temp.includes(cardArr[index])
+        ) {
+          temp.push(cardArr[index]);
+        }
+      }
+
+      temp.forEach((card) =>
+        BLOCK_RIGHT.insertAdjacentElement("beforeend", card)
+      );
+      temp.length = 0;
+      CARD_CONTAINER.classList.remove("transition_right");
+    }
+    BUTTON_LEFT.addEventListener("click", moveLeft);
+    BUTTON_RIGHT.addEventListener("click", moveRight);
+  });
+}
 export { createSlider, fillblocks, cardArr, CARD_CONTAINER };
