@@ -1,12 +1,12 @@
+"use strict";
 export const OVERLAY = document.querySelector(".overlay");
 
 export class Popup {
   constructor(classes) {
     this.classes = classes;
     this.popup = "";
-    // this.popupContent = "";
+
     this.popupCloseBtn = "";
-    // this.overlayPopup = "";
   }
 
   buildPopup(content) {
@@ -67,10 +67,8 @@ export class Popup {
   closePopup(e) {
     let classes = e.target.classList;
     if (classes.contains("overlay") || classes.contains("popup__close-icon")) {
-      // console.log(classes);
       OVERLAY.classList.add("hidden");
       document.body.classList.remove("lock");
-      // console.log(document.querySelector(".overlay-popup"));
     }
   }
 }

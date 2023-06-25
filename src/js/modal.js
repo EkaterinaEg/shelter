@@ -1,3 +1,4 @@
+"use strict";
 import { Popup } from "./popup.js";
 
 export class Modal extends Popup {
@@ -54,15 +55,18 @@ export class Modal extends Popup {
       this.type &&
         (template += `<li class="list__type"><h3>${this.type} - ${this.breed}</h3></li>`);
       this.description &&
-        (template += `<li class="list__description"><h4>${this.description}</li>`),
-        this.age &&
-          (template += `<li class="list__age"><h4><b>Age:</b> ${this.age}</h4></li>`);
+        (template += `<li class="list__description"><h4>${this.description}</li>`);
+
+      template += `<ul class="list__info">`;
+
+      this.age &&
+        (template += `<li class="info__item age"><span><b>Age:</b> ${this.age}</span></li>`);
       this.inoculations &&
-        (template += `<li class="list__inoculations"><h4><b>Inoculations:</b> ${this.inoculations}</h4></li>`);
+        (template += `<li class="info__item inoculations"><span><b>Inoculations:</b> ${this.inoculations}</span></li>`);
       this.diseases &&
-        (template += `<li class="list__diseases"><span><h4><b>Diseases:</b> ${this.diseases}</h4></li>`);
+        (template += `<li class="info__item diseases"><span><span><b>Diseases:</b> ${this.diseases}</span></li>`);
       this.parasites &&
-        (template += `<li class="list__parasites"><h4><b>Parasites:</b> ${this.parasites}</h4></li>`);
+        (template += `<li class="info__item parasites"><span><b>Parasites:</b> ${this.parasites}</span></li>`);
 
       template += `</div>`;
     }
@@ -74,7 +78,6 @@ export class Modal extends Popup {
 
   renderPopup() {
     let content = this.generateContent();
-    // console.log(overlayPopup);
     super.buildPopup(content);
   }
 }

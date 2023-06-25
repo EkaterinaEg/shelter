@@ -34,12 +34,22 @@
   width: 45%;
   color: $color_popup-text;
   box-sizing: border-box;
-
-  list-style: inside;
 }
 .list__description {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.info__item > span {
+  @extend %font-add;
+  @include font($size: 1.5rem, $height: 1.65rem, $weight: normal);
+  letter-spacing: 0.06em; /*calc(1em*6%/100%)*/
+  color: $color-titles;
+}
+.list__info {
+  list-style: inside;
+}
+.info__item::marker {
+  color: $color-primary;
 }
 .popup__close-icon {
   position: absolute;
@@ -57,12 +67,4 @@
   &:hover {
     background-color: $button-hovered;
   }
-}
-.list__name,
-.list__type,
-.list__description {
-  list-style: none;
-}
-.list__age {
-  list-style: inside;
 }
