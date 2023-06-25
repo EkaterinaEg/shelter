@@ -1,3 +1,4 @@
+"use strict";
 import { createElement } from "./createElement.js";
 
 let buttonLeft = null;

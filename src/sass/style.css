@@ -436,7 +436,7 @@ ul {
 
 .email__text,
 .phone__text,
-.address__text, .card__title, .title, .pagination__buttons, .button, h4, h3, h2, h1 {
+.address__text, .info__item > span, .card__title, .title, .pagination__buttons, .button, h4, h3, h2, h1 {
   font-family: "Georgia", Verdana, sans-serif;
 }
 
@@ -701,14 +701,14 @@ a {
   .menu-list_active {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0;
     right: 0;
     text-align: center;
-    padding: 28vh 0 28vh 0;
     list-style: none;
     background-color: #292929;
     width: 92%;
-    height: 100vh;
+    height: 100%;
     z-index: 10;
     transition: right 0.3s;
     overflow: auto;
@@ -994,27 +994,29 @@ a {
 
 @keyframes animation_right {
   from {
-    left: -990px;
+    transform: translateX(-990px);
   }
   to {
-    left: -1980px;
+    transform: translateX(-1980px);
   }
 }
 .transition_right {
   animation-name: animation_right;
   animation-duration: 2s;
+  transform: translateX(-1980px);
 }
 
 @keyframes animation_left {
   from {
-    left: -990px;
+    transform: translateX(-990px);
   }
   to {
-    left: 0px;
+    transform: translateX(0px);
   }
 }
 .transition_left {
   animation-name: animation_left;
+  transform: translateX(0px);
   animation-duration: 2s;
 }
 
@@ -1053,12 +1055,29 @@ a {
   width: 45%;
   color: #000000;
   box-sizing: border-box;
-  list-style: inside;
 }
 
 .list__description {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.info__item > span {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.65rem;
+  font-display: swap;
+  letter-spacing: 0.06em; /*calc(1em*6%/100%)*/
+  color: #545454;
+}
+
+.list__info {
+  list-style: inside;
+}
+
+.info__item::marker {
+  color: #f1cdb3;
 }
 
 .popup__close-icon {
@@ -1076,16 +1095,6 @@ a {
 }
 .popup__close-icon:hover {
   background-color: #fddcc4;
-}
-
-.list__name,
-.list__type,
-.list__description {
-  list-style: none;
-}
-
-.list__age {
-  list-style: inside;
 }
 
 .overlay {

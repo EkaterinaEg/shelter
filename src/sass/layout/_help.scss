@@ -26,16 +26,6 @@
 .help__list {
   max-width: 1026px;
   margin: 0;
-  //   display: grid;
-  //   grid-template-columns: repeat(9, 1fr);
-  //   grid-template-rows: repeat(2, 113px);
-  //   justify-content: space-between;
-  // grid-template-areas:
-  //   pf tr ts bc sh
-  //   vt md cl sa;
-  //   row-gap: 55px;
-  //   column-gap: 120px;
-  //   align-items: center;
   display: flex;
   flex-wrap: wrap;
   row-gap: 56px;
@@ -51,10 +41,6 @@
   @include media-768 {
     padding: 0px 0px;
     justify-content: space-evenly;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // grid-template-rows: repeat(3, 113px);
-    // gap: 55px 63px;
   }
 
   @include media-tablet {
@@ -66,20 +52,7 @@
   @include media-mobilesmall {
     padding-left: 0;
   }
-  // padding: 60px 86px 0px 86px;
 }
-// .list__item:nth-child(6) {
-//   grid-column: 1/2;
-// }
-// .list__item:nth-child(7) {
-//   grid-column: 3/4;
-// }
-// .list__item:nth-child(8) {
-//   grid-column: 4/5;
-// }
-// .list__item:nth-child(9) {
-//   grid-column: 5/6;
-// }
 
 .list__item {
   text-align: center;

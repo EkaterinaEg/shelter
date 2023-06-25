@@ -155,28 +155,30 @@
 
 @keyframes animation_right {
   from {
-    left: -990px;
+    transform: translateX(-990px);
   }
   to {
-    left: -1980px;
+    transform: translateX(-1980px);
   }
 }
 
 .transition_right {
   animation-name: animation_right;
   animation-duration: 2s;
+  transform: translateX(-1980px);
 }
 
 @keyframes animation_left {
   from {
-    left: -990px;
+    transform: translateX(-990px);
   }
   to {
-    left: 0px;
+    transform: translateX(0px);
   }
 }
 
 .transition_left {
   animation-name: animation_left;
+  transform: translateX(0px);
   animation-duration: 2s;
 }

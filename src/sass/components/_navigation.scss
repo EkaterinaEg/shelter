@@ -12,14 +12,14 @@
     &_active {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       margin: 0;
       right: 0;
       text-align: center;
-      padding: 28vh 0 28vh 0;
       list-style: none;
       background-color: $color-link-light-hover;
       width: 92%;
-      height: 100vh;
+      height: 100%;
       z-index: 10;
       transition: right 0.3s;
       overflow: auto;

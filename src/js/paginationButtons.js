@@ -1,10 +1,8 @@
 import { createElement } from "./createElement.js";
-import { currentPage } from "./pagination.js";
 
 const PAGINATION_CONTAINER = document.querySelector(".our-friends__block");
 const TEXT_BUTTON_DOUBLE_PREV = "<<";
 const TEXT_BUTTON_DOUBLE_NEXT = ">>";
-// const TEXT_BUTTON_CURRENT = currentPage;
 const TEXT_BUTTON_PREV = "<";
 const TEXT_BUTTON_NEXT = ">";
 
@@ -67,24 +65,13 @@ function createPaginationButtons() {
   paginationButtonsContainer.append(ButtonCurrent);
   paginationButtonsContainer.append(ButtonNext);
   paginationButtonsContainer.append(ButtonDoubleNext);
-  // return (
-  //   ButtonCurrent,
-  //   ButtonDoubleNext,
-  //   ButtonDoublePrev,
-  //   ButtonNext,
-  //   ButtonPrev,
-  //   paginationButtonsContainer
-  // );
 }
 createPaginationButtons();
 
 export {
-  paginationButtonsContainer,
-  createPaginationButtons,
   ButtonCurrent,
   ButtonDoubleNext,
   ButtonDoublePrev,
   ButtonNext,
   ButtonPrev,
-  PAGINATION_CONTAINER,
 };

@@ -1,3 +1,4 @@
+"use strict";
 export class Card {
   constructor({ name, img, id }) {
     this.name = name;
