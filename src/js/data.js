@@ -13,7 +13,7 @@ const data = [
   },
   {
     name: "Sophia",
-    img: "../src/img/pets-sophia.png",
+    img: "./src/img/pets-sophia.png",
     type: "Dog",
     breed: "Shih tzu",
     description:
