@@ -590,13 +590,13 @@ h4 {
 }
 
 .buttons__btn-slider_arrow-left {
-  background: url(../../img/Arrow.svg) no-repeat;
+  background: url(../img/Arrow.svg) no-repeat;
   background-position: center;
 }
 
 .buttons__btn-slider_arrow-right {
   transform: rotate(180deg);
-  background: url(../../img/Arrow.svg) no-repeat;
+  background: url(../img/Arrow.svg) no-repeat;
   background-position: center;
 }
 
