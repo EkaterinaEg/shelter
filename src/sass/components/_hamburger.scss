@@ -20,8 +20,6 @@
   width: 30px;
   height: 22px;
   @extend %transition;
-  &_dark-for-light {
-  }
   &_active {
     transform: rotate(90deg);
   }

@@ -33,7 +33,7 @@
 .menu-list__item {
   margin-right: 36px;
   position: relative;
-  @include media-768 {
+  @include media-tablet {
     margin-right: 0;
     margin-bottom: 41px;
   }

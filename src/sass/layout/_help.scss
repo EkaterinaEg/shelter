@@ -45,7 +45,7 @@
 
   @include media-tablet {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 87px);
+    grid-template-rows: repeat(5, 100px);
     gap: 30px;
     padding-left: 20px;
   }
