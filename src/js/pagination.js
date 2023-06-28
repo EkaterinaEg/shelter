@@ -8,40 +8,79 @@ import {
   ButtonNext,
   ButtonPrev,
 } from "./paginationButtons.js";
+import { numberOfCards } from "./media.js";
 // import { cardArr } from "./slider.js";
 
 const PAGINATION_SLIDERS_CONTAINER = document.querySelector(".slider_pets");
 const PAGINATION_BUTTONS = document.querySelectorAll(".pagination__buttons");
 
-let numberOfPages = 6;
-let cardOnPage = 8;
-let parts = 3;
+let numberOfPages = null;
+let cardOnPage = null;
+let parts = null;
+
 let paginationArrayOfCards = new Array();
 let currentPage = 1;
 
 let cardArr = DATA_WITH_ID.map((card) => new Card(card));
 
+cardArr = mixArray(cardArr);
+
+function mixArray(array) {
+  return array.sort((a, b) => 0.5 - Math.random());
+}
+
+function checkScreenPagination() {
+  currentPage = 1;
+  const pageWidth = document.documentElement.scrollWidth;
+
+  if (pageWidth >= 1280) {
+    numberOfPages = 6;
+    cardOnPage = 8;
+    parts = 3;
+  } else if (pageWidth <= 767.9) {
+    numberOfPages = 16;
+    cardOnPage = 3;
+    parts = 1;
+  } else {
+    numberOfPages = 8;
+    cardOnPage = 6;
+    parts = 2;
+  }
+  console.log(pageWidth);
+  // console.log(numberOfPages);
+  // console.log(cardOnPage);
+  createArrayOfCards();
+}
+// checkScreenPagination();
+
 function createArrayOfCards() {
   let tempArr = [];
-
-  for (let i = 0; i < cardOnPage; i += 3) {
-    tempArr.push(cardArr.slice(i, i + parts));
+  let arrayOfAllCards = [];
+  // console.log(numberOfPages);
+  // console.log(cardOnPage);
+  for (let i = 0; i < cardArr.length; i += 3) {
+    tempArr.push(cardArr.slice(i, i + 3)); //create array of arrays for parts
   }
 
-  function mixArray(array) {
-    return array.sort((a, b) => 0.5 - Math.random());
-  }
-
-  for (let i = 0; i < numberOfPages; i += 1) {
+  for (let i = 0; i < 6; i += 1) {
     let element = tempArr.map((el) => mixArray(el));
-
-    if (element[i] === element[i + 1]) {
-      element = mixArray(element);
-    }
-    paginationArrayOfCards.push(element.flat());
+    // if ((element[i] = element[i + 1])) {
+    //   tempArr.map((el) => mixArray(el));
+    // }
+    arrayOfAllCards.push(element.flat());
   }
-  return paginationArrayOfCards;
+  arrayOfAllCards = arrayOfAllCards.flat(); // array of 48 cards
+  // console.log(arrayOfAllCards);
+  paginationArrayOfCards.length = 0;
+  for (let i = 0; i < arrayOfAllCards.length; i += cardOnPage) {
+    let element = arrayOfAllCards.slice(i, i + cardOnPage);
+
+    paginationArrayOfCards.push(element);
+  }
+  return paginationArrayOfCards; // array of array with certain number od cards
 }
+
+// console.log(paginationArrayOfCards);
 
 //show cards based on pageNumber
 function showPictures(data, pageNumber) {
@@ -61,7 +100,7 @@ function paginationClickHandler(e) {
     currentPage = 1;
   } else if (e.target.classList.contains("pagination__buttons_double-next")) {
     lastPageShown(paginationArrayOfCards);
-    currentPage = 6;
+    currentPage = numberOfPages;
   } else {
     PAGINATION_BUTTONS.forEach((button) => enableButtons(button));
     if (
@@ -75,10 +114,10 @@ function paginationClickHandler(e) {
     }
     if (
       e.target.classList.contains("pagination__buttons_next") &&
-      currentPage === 6
+      currentPage === numberOfPages
     ) {
       lastPageShown(paginationArrayOfCards);
-      currentPage = 6;
+      currentPage = numberOfPages;
     }
 
     if (
@@ -109,7 +148,7 @@ function firstPageShown(array, pageNumber = 1) {
   disableButtons(ButtonDoublePrev);
 }
 
-function lastPageShown(array, pageNumber = 6) {
+function lastPageShown(array, pageNumber = numberOfPages) {
   showPictures(array, pageNumber);
   ButtonCurrent.textContent = pageNumber;
   enableButtons(ButtonPrev);
@@ -126,9 +165,19 @@ function enableButtons(button) {
   button.classList.remove("button_disabled");
 }
 function initPagination() {
+  checkScreenPagination();
+  firstPageShown(paginationArrayOfCards, 1);
   createArrayOfCards();
   showPictures(paginationArrayOfCards, currentPage);
   disableButtons(ButtonDoublePrev);
   disableButtons(ButtonPrev);
 }
 initPagination();
+
+export {
+  initPagination,
+  checkScreenPagination,
+  paginationArrayOfCards,
+  currentPage,
+  showPictures,
+};

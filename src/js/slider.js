@@ -25,7 +25,7 @@ for (let i = 1; i <= COUNT_CARD_BLOCK; i++) {
   const cardGroup = createElement("div", "slider__block");
   cardGroup.classList.add(`block-${i}`);
 
-  CARD_CONTAINER.append(cardGroup);
+  // CARD_CONTAINER.append(cardGroup);
 }
 
 const BLOCK_LEFT = document.querySelector(".block-1");
@@ -48,7 +48,7 @@ function arraySlider(array, id) {
 
 let index = 0;
 
-function checkScreen(array, index) {
+function checkScreenSlider(array, index) {
   const pageWidth = document.documentElement.scrollWidth;
 
   if (pageWidth >= 1280) {
@@ -60,11 +60,9 @@ function checkScreen(array, index) {
   }
 
   fillblocks(array, index);
-  console.log(pageWidth);
-  console.log(numberOfCards);
 }
 
-checkScreen(cardArr, index);
+checkScreenSlider(cardArr, index);
 
 function fillblocks(array, index) {
   if (CARD_CONTAINER) {
@@ -100,24 +98,24 @@ const moveLeft = () => {
   }
 };
 
-BUTTON_LEFT.addEventListener("click", moveLeft);
-BUTTON_RIGHT.addEventListener("click", moveRight);
+// BUTTON_LEFT.addEventListener("click", moveLeft);
+// BUTTON_RIGHT.addEventListener("click", moveRight);
 
-CARD_CONTAINER.addEventListener("animationend", (animationEvent) => {
-  pressButtonAvailable = true;
+// CARD_CONTAINER.addEventListener("animationend", (animationEvent) => {
+//   pressButtonAvailable = true;
 
-  if (animationEvent.animationName === "animation_left") {
-    CARD_CONTAINER.classList.remove("transition_left");
-    index -= numberOfCards;
-    fillblocks(cardArr, index);
-  }
-  if (animationEvent.animationName === "animation_right") {
-    CARD_CONTAINER.classList.remove("transition_right");
-    index += numberOfCards;
-    fillblocks(cardArr, index);
-  }
-});
+//   if (animationEvent.animationName === "animation_left") {
+//     CARD_CONTAINER.classList.remove("transition_left");
+//     index -= numberOfCards;
+//     fillblocks(cardArr, index);
+//   }
+//   if (animationEvent.animationName === "animation_right") {
+//     CARD_CONTAINER.classList.remove("transition_right");
+//     index += numberOfCards;
+//     fillblocks(cardArr, index);
+//   }
+// });
 
 // export { numberOfCards, setNumberOfCards, fillblocks, cardArr, index };
-export { fillblocks, cardArr, index, checkScreen };
+export { fillblocks, cardArr, index, checkScreenSlider };
 // export { handleLaptopChange };

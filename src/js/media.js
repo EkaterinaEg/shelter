@@ -1,15 +1,14 @@
 "use strict";
 
-import {
-  //   numberOfCards,
-  //   setNumberOfCards,
-  //   handleLaptopChange,
-  fillblocks,
-  cardArr,
-  index,
-  checkScreen,
-} from "./slider.js";
+import { cardArr, index, checkScreenSlider } from "./slider.js";
 
+import {
+  checkScreenPagination,
+  paginationArrayOfCards,
+  currentPage,
+  showPictures,
+  initPagination,
+} from "./pagination.js";
 let numberOfCards;
 
 const checkTablet = window.matchMedia("(max-width: 767.9px)"); //1 card
@@ -18,7 +17,8 @@ const checkDesktop = window.matchMedia("(min-width: 1280px)"); //3 cards
 
 function mediaClickHandler(e) {
   if (e.matches) {
-    checkScreen(cardArr, index);
+    // checkScreenSlider(cardArr, index);
+    initPagination();
   }
 }
 
