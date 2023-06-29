@@ -36,4 +36,4 @@ function createSliderButtons() {
   buttonContainer.append(buttonLeft);
   buttonContainer.append(buttonRight);
 }
-// createSliderButtons();
+createSliderButtons();

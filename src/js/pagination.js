@@ -172,7 +172,7 @@ function initPagination() {
   disableButtons(ButtonDoublePrev);
   disableButtons(ButtonPrev);
 }
-initPagination();
+// initPagination();
 
 export {
   initPagination,

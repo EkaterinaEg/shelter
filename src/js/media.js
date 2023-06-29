@@ -2,13 +2,7 @@
 
 import { cardArr, index, checkScreenSlider } from "./slider.js";
 
-import {
-  checkScreenPagination,
-  paginationArrayOfCards,
-  currentPage,
-  showPictures,
-  initPagination,
-} from "./pagination.js";
+import { initPagination } from "./pagination.js";
 let numberOfCards;
 
 const checkTablet = window.matchMedia("(max-width: 767.9px)"); //1 card
@@ -17,8 +11,8 @@ const checkDesktop = window.matchMedia("(min-width: 1280px)"); //3 cards
 
 function mediaClickHandler(e) {
   if (e.matches) {
-    // checkScreenSlider(cardArr, index);
-    initPagination();
+    checkScreenSlider(cardArr, index);
+    // initPagination();
   }
 }
 
