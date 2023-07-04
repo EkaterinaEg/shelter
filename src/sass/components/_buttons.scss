@@ -23,7 +23,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 49%;
   display: flex;
   justify-content: space-between;
   z-index: 0;
@@ -31,6 +31,9 @@
     justify-content: center;
     gap: 80px;
     top: 83%;
+  }
+  @include media-mobilesmall {
+    top: 79%;
   }
 }
 .our-friends__button {

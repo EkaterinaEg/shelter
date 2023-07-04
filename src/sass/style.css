@@ -555,7 +555,7 @@ h4 {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 49%;
   display: flex;
   justify-content: space-between;
   z-index: 0;
@@ -565,6 +565,11 @@ h4 {
     justify-content: center;
     gap: 80px;
     top: 83%;
+  }
+}
+@media (max-width: 320px) {
+  .our-friends__buttons {
+    top: 79%;
   }
 }
 
@@ -701,7 +706,7 @@ a {
   .menu-list_active {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 248px;
     margin: 0;
     right: 0;
     text-align: center;
@@ -987,7 +992,6 @@ a {
   .slider__block {
     column-gap: 40px;
     margin-bottom: 0;
-    margin-top: 40px;
   }
 }
 @media (max-width: 767.9px) {
@@ -1002,17 +1006,29 @@ a {
   width: 900px;
   min-height: 500px;
   z-index: 1000;
+  border-radius: 9px;
 }
 .popup:hover {
   box-shadow: 0px 2px 35px 14px;
+}
+@media (max-width: 1279px) {
+  .popup {
+    width: 630px;
+    min-height: 350px;
+  }
+}
+@media (max-width: 767.9px) {
+  .popup {
+    width: 240px;
+    min-height: 341px;
+    text-align: center;
+  }
 }
 
 .popup__content {
   display: flex;
   justify-content: center;
   background-color: #fafafa;
-  /* overflow: auto; */
-  align-items: center;
 }
 
 .content__img {
@@ -1022,21 +1038,60 @@ a {
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
 }
+@media (max-width: 767.9px) {
+  .content__img {
+    display: none;
+  }
+}
 
 .content__list {
   display: flex;
   flex-direction: column;
-  column-gap: 10px;
-  padding: 50px 20px 88px 29px;
+  padding: 50px 15px 0 36px;
   justify-content: start;
   width: 45%;
   color: #000000;
   box-sizing: border-box;
+  margin: 0;
+}
+@media (max-width: 1279px) {
+  .content__list {
+    padding: 10px 9px 0 14px;
+  }
+}
+@media (max-width: 767.9px) {
+  .content__list {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+.list__name {
+  margin-bottom: 10px;
 }
 
 .list__description {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 39px;
+}
+@media (max-width: 1279px) {
+  .list__description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .list__description > h4 {
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.43rem;
+    font-display: swap;
+    letter-spacing: 0.06em;
+  }
+}
+@media (max-width: 1279px) and (max-width: 767.9px) {
+  .list__description {
+    text-align: justify;
+  }
 }
 
 .info__item > span {
@@ -1047,10 +1102,16 @@ a {
   font-display: swap;
   letter-spacing: 0.06em; /*calc(1em*6%/100%)*/
   color: #545454;
+  margin-bottom: 10px;
 }
 
 .list__info {
   list-style: inside;
+}
+@media (max-width: 767.9px) {
+  .list__info {
+    text-align: left;
+  }
 }
 
 .info__item::marker {
@@ -1062,8 +1123,8 @@ a {
   width: 52px;
   height: 52px;
   padding: 13px 18px;
-  right: -50px;
-  top: -50px;
+  right: -44px;
+  top: -52px;
   border: 2px solid #f1cdb3;
   border-radius: 100px;
   cursor: pointer;
@@ -1072,6 +1133,11 @@ a {
 }
 .popup__close-icon:hover {
   background-color: #fddcc4;
+}
+@media (max-width: 320px) {
+  .popup__close-icon {
+    right: -30px;
+  }
 }
 
 .overlay {
@@ -1335,6 +1401,11 @@ a {
     padding: 70px 0 100px 0px;
   }
 }
+@media (max-width: 320px) {
+  .our-friends_main {
+    padding: 42px 0 42px 0px;
+  }
+}
 
 @media (max-width: 768px) {
   .our-friends_pets {
@@ -1469,7 +1540,8 @@ a {
 }
 @media (max-width: 320px) {
   .help__list {
-    padding-left: 0;
+    padding: 0 5px 0 5px;
+    grid-template-rows: repeat(5, 87px);
   }
 }
 

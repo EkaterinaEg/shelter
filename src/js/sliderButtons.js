@@ -26,7 +26,7 @@ function createSliderButtons() {
   // buttonRight.classList.add("buttons__btn-slider_arrow-right");
 
   buttonOurFriends = createElement("a", "button");
-  buttonOurFriends.setAttribute("href", "/src/pets.html");
+  buttonOurFriends.setAttribute("href", "pets.html");
   buttonOurFriends.classList.add("our-friends__button", "button_colored");
   buttonOurFriends.textContent = "Get to know the rest";
 

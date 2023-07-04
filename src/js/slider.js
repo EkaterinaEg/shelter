@@ -3,7 +3,7 @@ import { DATA_WITH_ID } from "./data.js";
 import { Card } from "./card.js";
 import { createElement } from "./createElement.js";
 import "./sliderButtons.js";
-// import { numberOfCards } from "./media.js";
+import { mediaClickHandlerhandler } from "./media.js";
 
 const BUTTON_RIGHT = document.querySelector(".buttons__btn-slider_arrow-right");
 const BUTTON_LEFT = document.querySelector(".buttons__btn-slider_arrow-left");
@@ -14,12 +14,7 @@ const COUNT_CARD_BLOCK = 3;
 let cardArr = new Array();
 let pressButtonAvailable = true;
 
-let numberOfCards;
-// function setNumberOfCards(value) {
-//   numberOfCards = value;
-//   return numberOfCards;
-// }
-// setNumberOfCards(3);
+let numberOfCards = null;
 
 for (let i = 1; i <= COUNT_CARD_BLOCK; i++) {
   const cardGroup = createElement("div", "slider__block");
@@ -34,7 +29,7 @@ const BLOCK_RIGHT = document.querySelector(".block-3");
 
 cardArr = DATA_WITH_ID.map((card) => new Card(card));
 
-cardArr.sort((a, b) => 0.5 - Math.random());
+cardArr.sort(() => 0.5 - Math.random());
 
 function arraySlider(array, id) {
   while (id < 0) {
@@ -48,7 +43,7 @@ function arraySlider(array, id) {
 
 let index = 0;
 
-function checkScreenSlider(array, index) {
+function initialNumberOfCards() {
   const pageWidth = document.documentElement.scrollWidth;
 
   if (pageWidth >= 1280) {
@@ -58,12 +53,32 @@ function checkScreenSlider(array, index) {
   } else {
     numberOfCards = 2;
   }
-  console.log(pageWidth);
-  console.log(numberOfCards);
-  fillblocks(array, index);
 }
 
-checkScreenSlider(cardArr, index);
+initialNumberOfCards();
+
+fillblocks(cardArr, index);
+
+mediaClickHandlerhandler(
+  (e) => {
+    if (e.matches) {
+      initialNumberOfCards();
+      fillblocks(cardArr, index);
+    }
+  },
+  (e) => {
+    if (e.matches) {
+      initialNumberOfCards();
+      fillblocks(cardArr, index);
+    }
+  },
+  (e) => {
+    if (e.matches) {
+      initialNumberOfCards();
+      fillblocks(cardArr, index);
+    }
+  }
+);
 
 function fillblocks(array, index) {
   if (CARD_CONTAINER) {
@@ -82,8 +97,6 @@ function fillblocks(array, index) {
     }
   }
 }
-
-// fillblocks(cardArr, index);
 
 const moveRight = () => {
   if (pressButtonAvailable) {
@@ -118,5 +131,5 @@ CARD_CONTAINER.addEventListener("animationend", (animationEvent) => {
 });
 
 // export { numberOfCards, setNumberOfCards, fillblocks, cardArr, index };
-export { fillblocks, cardArr, index, checkScreenSlider };
+export { fillblocks, cardArr, index };
 // export { handleLaptopChange };

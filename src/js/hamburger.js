@@ -2,7 +2,6 @@
 
 const BURGER = document.querySelector(".header__hamburger");
 const BURGER_LINE_LIGHT = document.querySelector(".hamburger-line_light");
-const BURGER_LIGHT = document.querySelector(".header__hamburger_light");
 const MENU = document.querySelector(".menu-list");
 const OVERLAY = document.querySelector(".overlay");
 const LINKS = document.querySelectorAll(".menu-list__link");

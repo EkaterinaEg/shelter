@@ -11,6 +11,9 @@
   @include media-768 {
     padding: 70px 0 100px 0px;
   }
+  @include media-mobilesmall {
+    padding: 42px 0 42px 0px;
+  }
 }
 .our-friends_pets {
   @include media-768 {

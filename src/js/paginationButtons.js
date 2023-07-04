@@ -66,7 +66,7 @@ function createPaginationButtons() {
   paginationButtonsContainer.append(ButtonNext);
   paginationButtonsContainer.append(ButtonDoubleNext);
 }
-// createPaginationButtons();
+createPaginationButtons();
 
 export {
   ButtonCurrent,

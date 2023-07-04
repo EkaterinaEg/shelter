@@ -8,15 +8,13 @@ import {
   ButtonNext,
   ButtonPrev,
 } from "./paginationButtons.js";
-import { numberOfCards } from "./media.js";
-// import { cardArr } from "./slider.js";
+import { mediaClickHandlerhandler } from "./media.js";
 
 const PAGINATION_SLIDERS_CONTAINER = document.querySelector(".slider_pets");
 const PAGINATION_BUTTONS = document.querySelectorAll(".pagination__buttons");
 
 let numberOfPages = null;
 let cardOnPage = null;
-let parts = null;
 
 let paginationArrayOfCards = new Array();
 let currentPage = 1;
@@ -26,51 +24,70 @@ let cardArr = DATA_WITH_ID.map((card) => new Card(card));
 cardArr = mixArray(cardArr);
 
 function mixArray(array) {
-  return array.sort((a, b) => 0.5 - Math.random());
+  return array.sort(() => 0.5 - Math.random());
 }
 
-function checkScreenPagination() {
+function variablesUpdateBasedOnScreen() {
   currentPage = 1;
   const pageWidth = document.documentElement.scrollWidth;
 
   if (pageWidth >= 1280) {
     numberOfPages = 6;
     cardOnPage = 8;
-    parts = 3;
   } else if (pageWidth <= 767.9) {
     numberOfPages = 16;
     cardOnPage = 3;
-    parts = 1;
   } else {
     numberOfPages = 8;
     cardOnPage = 6;
-    parts = 2;
   }
-  console.log(pageWidth);
-  // console.log(numberOfPages);
-  // console.log(cardOnPage);
-  createArrayOfCards();
 }
-// checkScreenPagination();
+
+mediaClickHandlerhandler(
+  (e) => {
+    if (e.matches) {
+      initPagination();
+    }
+  },
+  (e) => {
+    if (e.matches) {
+      initPagination();
+    }
+  },
+  (e) => {
+    if (e.matches) {
+      initPagination();
+    }
+  }
+);
+
+const compareArrays = (a, b) =>
+  a.length === b.length && a.every((element, index) => element === b[index]);
 
 function createArrayOfCards() {
   let tempArr = [];
   let arrayOfAllCards = [];
-  // console.log(numberOfPages);
-  // console.log(cardOnPage);
+
   for (let i = 0; i < cardArr.length; i += 3) {
     tempArr.push(cardArr.slice(i, i + 3)); //create array of arrays for parts
   }
 
   for (let i = 0; i < 6; i += 1) {
-    let element = tempArr.map((el) => mixArray(el));
-    // if ((element[i] = element[i + 1])) {
-    //   tempArr.map((el) => mixArray(el));
-    // }
-    arrayOfAllCards.push(element.flat());
+    arrayOfAllCards.push(tempArr.map((el) => mixArray(el)).flat());
   }
+
+  for (let i = 0; i < arrayOfAllCards.length; i += 1) {
+    if (arrayOfAllCards[i + 1]) {
+      if (compareArrays(arrayOfAllCards[i], arrayOfAllCards[i + 1])) {
+        arrayOfAllCards[i] = mixArray(arrayOfAllCards[i].slice(0, 3)).concat(
+          mixArray(arrayOfAllCards[i].slice(3))
+        );
+      }
+    }
+  }
+
   arrayOfAllCards = arrayOfAllCards.flat(); // array of 48 cards
-  // console.log(arrayOfAllCards);
+
   paginationArrayOfCards.length = 0;
   for (let i = 0; i < arrayOfAllCards.length; i += cardOnPage) {
     let element = arrayOfAllCards.slice(i, i + cardOnPage);
@@ -79,8 +96,6 @@ function createArrayOfCards() {
   }
   return paginationArrayOfCards; // array of array with certain number od cards
 }
-
-// console.log(paginationArrayOfCards);
 
 //show cards based on pageNumber
 function showPictures(data, pageNumber) {
@@ -165,19 +180,11 @@ function enableButtons(button) {
   button.classList.remove("button_disabled");
 }
 function initPagination() {
-  checkScreenPagination();
-  firstPageShown(paginationArrayOfCards, 1);
+  variablesUpdateBasedOnScreen();
   createArrayOfCards();
   showPictures(paginationArrayOfCards, currentPage);
+  firstPageShown(paginationArrayOfCards, 1);
   disableButtons(ButtonDoublePrev);
   disableButtons(ButtonPrev);
 }
-// initPagination();
-
-export {
-  initPagination,
-  checkScreenPagination,
-  paginationArrayOfCards,
-  currentPage,
-  showPictures,
-};
+initPagination();
