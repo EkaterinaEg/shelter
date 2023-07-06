@@ -1,4 +1,6 @@
-##Adaptive 2-pages site [Shelter]https://ekaterinaeg.github.io/shelter/
+## Adaptive 2-pages site
+
+\*\*[Shelter](https://ekaterinaeg.github.io/shelter/)
 
 **HTML5 | CSS3 | SASS | ESLint | JavaScript**
 
